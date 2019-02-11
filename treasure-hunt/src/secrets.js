@@ -1,4 +1,3 @@
 const config = {
-  myToken: 'diditignore?'
+  token: 'hahah'
 }
-export default config
