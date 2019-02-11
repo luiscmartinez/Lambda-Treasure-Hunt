@@ -2,3 +2,4 @@ db.sqlite3
 .env
 Lambda-Treasure-Hunt.sublime-*
 *.pyc
+/Users/chivo/lambda-school/week-twenty/Lambda-Treasure-Hunt/treasure-hunt/src/secrets.js
