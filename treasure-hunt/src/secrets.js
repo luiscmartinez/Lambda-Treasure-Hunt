@@ -1,3 +1,0 @@
-const config = {
-  token: 'hahah'
-}
