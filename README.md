@@ -1,5 +1,6 @@
 # Lambda Treasure Hunt
 
+
 Welcome to the first annual Lambda Treasure Hunt!
 
 After the war between the humans and machines, we were left in a world straddling the line between physical and digital. You, the elite chosen of Lambda School, have been selected to participate in an hunt for digital riches. Great glory and rewards await the most efficient treasure hunters. Will you divine the many secrets of the ever-evolving island and prove yourself worthy of our algorithmic overlords?
