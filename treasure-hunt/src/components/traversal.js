@@ -10,7 +10,6 @@ export default class Traversal extends Component {
     super(props)
   }
   componentDidMount () {
-    const headers = { headers: { Authorization: config.token } }
     axios
       .get('https://lambda-treasure-hunt.herokuapp.com/api/adv/init/')
       .then((response) => {
@@ -20,7 +19,14 @@ export default class Traversal extends Component {
         console.log(error.response.data)
       })
   }
-
+  handleMovement (direction) {
+    axios
+      .post('https://lambda-treasure-hunt.herokuapp.com/api/adv/move/', {
+        direction: direction
+      })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.error(err))
+  }
   render () {
     return <h1>hello</h1>
   }
