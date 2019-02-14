@@ -105,7 +105,11 @@ export default class Traversal extends Component {
     return (
       <div>
         <h1>hello</h1>
-        <h2 onClick={() => this.handleMovement('s')}>move</h2>
+        <h2 onClick={() => this.handleMovement('s')}>south</h2>
+        <h2 onClick={() => this.handleMovement('n')}>north</h2>
+        <h2 onClick={() => this.handleMovement('w')}>west</h2>
+        <h2 onClick={() => this.handleMovement('e')}>east</h2>
+
         <button>AutoTraverse!</button>
       </div>
     )
