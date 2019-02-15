@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import config from '../secrets'
+import graph_data from './room_data.json'
 
 axios.defaults.headers.common['Authorization'] = config.token
 axios.defaults.headers.post['Content-Type'] = 'application/json'
@@ -21,25 +22,28 @@ export default class Traversal extends Component {
       const graph = JSON.parse(localStorage.getItem('graph'))
       this.setState({ graph })
     }
-    axios
-      .get('https://lambda-treasure-hunt.herokuapp.com/api/adv/init/')
-      .then((res) => {
-        console.log(res.data)
-        const { room_id, coordinates, exits, cooldown } = res.data
-        this.setState({ room_id, cooldown })
-        const prev_room_id = this.state.room_id
-        console.log(this.state.room_id)
-        const graph = this.updateGraph(
-          room_id,
-          this.parseCoordinates(coordinates),
-          exits,
-          prev_room_id
-        )
-        this.setState({ graph })
-      })
-      .catch((error) => {
-        console.error(error.response.data)
-      })
+    if (graph_data) {
+      this.setState({ graph: graph_data })
+    }
+    // axios
+    //   .get('https://lambda-treasure-hunt.herokuapp.com/api/adv/init/')
+    //   .then((res) => {
+    //     console.log(res.data)
+    //     const { room_id, coordinates, exits, cooldown } = res.data
+    //     this.setState({ room_id, cooldown })
+    //     const prev_room_id = this.state.room_id
+    //     console.log(this.state.room_id)
+    //     const graph = this.updateGraph(
+    //       room_id,
+    //       this.parseCoordinates(coordinates),
+    //       exits,
+    //       prev_room_id
+    //     )
+    //     this.setState({ graph })
+    //   })
+    //   .catch((error) => {
+    //     console.error(error.response.data)
+    //   })
   }
 
   handleMovement = (move) => {
@@ -101,7 +105,16 @@ export default class Traversal extends Component {
     return coordsObject
   }
 
+  renderMap = () => {
+    console.log('in herer')
+    for (let roomId = 0; roomId <this.state.graph.length; roomId++) {
+      const coordinates = this.state.graph['roomId'].coordinates
+      const exits = this.state.graph['roomId'].exits
+      console.log(coordinates,exits)
+  }
+  }
   render () {
+    this.renderMap()
     return (
       <div>
         <h1>hello</h1>
@@ -109,8 +122,6 @@ export default class Traversal extends Component {
         <h2 onClick={() => this.handleMovement('n')}>north</h2>
         <h2 onClick={() => this.handleMovement('w')}>west</h2>
         <h2 onClick={() => this.handleMovement('e')}>east</h2>
-
-        <button>AutoTraverse!</button>
       </div>
     )
   }
